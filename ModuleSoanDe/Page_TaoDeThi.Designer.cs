@@ -37,6 +37,8 @@ namespace ModuleSoanDe
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_SoLuongToiDa = new System.Windows.Forms.Label();
             this.clbx_CauHoi = new System.Windows.Forms.CheckedListBox();
+            this.txt_MaDe = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoLuongCauHoi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,6 +112,7 @@ namespace ModuleSoanDe
             // 
             this.clbx_CauHoi.CheckOnClick = true;
             this.clbx_CauHoi.FormattingEnabled = true;
+            this.clbx_CauHoi.HorizontalScrollbar = true;
             this.clbx_CauHoi.Location = new System.Drawing.Point(14, 180);
             this.clbx_CauHoi.Name = "clbx_CauHoi";
             this.clbx_CauHoi.Size = new System.Drawing.Size(613, 268);
@@ -117,15 +120,33 @@ namespace ModuleSoanDe
             this.clbx_CauHoi.Visible = false;
             this.clbx_CauHoi.SelectedIndexChanged += new System.EventHandler(this.clbx_CauHoi_SelectedIndexChanged);
             // 
+            // txt_MaDe
+            // 
+            this.txt_MaDe.Location = new System.Drawing.Point(391, 82);
+            this.txt_MaDe.Name = "txt_MaDe";
+            this.txt_MaDe.Size = new System.Drawing.Size(73, 27);
+            this.txt_MaDe.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(334, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Mã đề";
+            // 
             // Page_TaoDeThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txt_MaDe);
             this.Controls.Add(this.clbx_CauHoi);
             this.Controls.Add(this.lbl_SoLuongCauHoi);
             this.Controls.Add(this.lbl_SoLuongToiDa);
             this.Controls.Add(this.txt_SoLuongCauHoi);
             this.Controls.Add(this.cbx_LuaChon);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_TaoDeThi);
             this.Controls.Add(this.label1);
@@ -147,5 +168,7 @@ namespace ModuleSoanDe
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_SoLuongToiDa;
         private System.Windows.Forms.CheckedListBox clbx_CauHoi;
+        private System.Windows.Forms.TextBox txt_MaDe;
+        private System.Windows.Forms.Label label2;
     }
 }

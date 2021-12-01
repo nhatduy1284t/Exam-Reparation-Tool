@@ -42,8 +42,10 @@ namespace ModuleSoanDe
                 case Page.TAO_DE_THI:
                     Controls.Add(new Page_TaoDeThi());
                     break;
+                case Page.CHAM_BAI:
+                    //Controls.Add(new WrapListBox());
+                    break;
             }
-
         }
         private void ClearPage()
         {
@@ -53,6 +55,9 @@ namespace ModuleSoanDe
             }
         }
 
-       
+        private void btn_ChamBai_Click(object sender, EventArgs e)
+        {
+            DisplayPage(Page.CHAM_BAI);
+        }
     }
 }

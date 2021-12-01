@@ -43,6 +43,7 @@ namespace ModuleSoanDe
             this.btn_SoanCauHoi.Name = "btn_SoanCauHoi";
             this.btn_SoanCauHoi.Size = new System.Drawing.Size(405, 60);
             this.btn_SoanCauHoi.TabIndex = 0;
+            this.btn_SoanCauHoi.TabStop = false;
             this.btn_SoanCauHoi.Text = "Soạn câu hỏi";
             this.btn_SoanCauHoi.UseVisualStyleBackColor = true;
             this.btn_SoanCauHoi.Click += new System.EventHandler(this.btn_SoanCauHoi_Click);
@@ -55,8 +56,10 @@ namespace ModuleSoanDe
             this.btn_ChamBai.Name = "btn_ChamBai";
             this.btn_ChamBai.Size = new System.Drawing.Size(405, 60);
             this.btn_ChamBai.TabIndex = 0;
+            this.btn_ChamBai.TabStop = false;
             this.btn_ChamBai.Text = "Chấm bài";
             this.btn_ChamBai.UseVisualStyleBackColor = true;
+            this.btn_ChamBai.Click += new System.EventHandler(this.btn_ChamBai_Click);
             // 
             // btn_TaoBaiThi
             // 
@@ -66,6 +69,7 @@ namespace ModuleSoanDe
             this.btn_TaoBaiThi.Name = "btn_TaoBaiThi";
             this.btn_TaoBaiThi.Size = new System.Drawing.Size(405, 60);
             this.btn_TaoBaiThi.TabIndex = 0;
+            this.btn_TaoBaiThi.TabStop = false;
             this.btn_TaoBaiThi.Text = "Tạo bài thi";
             this.btn_TaoBaiThi.UseVisualStyleBackColor = true;
             this.btn_TaoBaiThi.Click += new System.EventHandler(this.btn_TaoBaiThi_Click);
@@ -85,7 +89,7 @@ namespace ModuleSoanDe
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(429, 322);
+            this.ClientSize = new System.Drawing.Size(429, 482);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_TaoBaiThi);
             this.Controls.Add(this.btn_ChamBai);
