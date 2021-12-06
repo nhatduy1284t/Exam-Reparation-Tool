@@ -39,6 +39,8 @@ namespace ModuleSoanDe
             this.clbx_CauHoi = new System.Windows.Forms.CheckedListBox();
             this.txt_MaDe = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_ChonFile = new System.Windows.Forms.Button();
+            this.lbl_ChonFile = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoLuongCauHoi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +48,7 @@ namespace ModuleSoanDe
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(134, 15);
+            this.label1.Location = new System.Drawing.Point(206, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(201, 54);
             this.label1.TabIndex = 0;
@@ -56,7 +58,7 @@ namespace ModuleSoanDe
             // 
             this.btn_TaoDeThi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_TaoDeThi.Location = new System.Drawing.Point(14, 466);
+            this.btn_TaoDeThi.Location = new System.Drawing.Point(14, 557);
             this.btn_TaoDeThi.Name = "btn_TaoDeThi";
             this.btn_TaoDeThi.Size = new System.Drawing.Size(613, 53);
             this.btn_TaoDeThi.TabIndex = 1;
@@ -113,9 +115,9 @@ namespace ModuleSoanDe
             this.clbx_CauHoi.CheckOnClick = true;
             this.clbx_CauHoi.FormattingEnabled = true;
             this.clbx_CauHoi.HorizontalScrollbar = true;
-            this.clbx_CauHoi.Location = new System.Drawing.Point(14, 180);
+            this.clbx_CauHoi.Location = new System.Drawing.Point(14, 224);
             this.clbx_CauHoi.Name = "clbx_CauHoi";
-            this.clbx_CauHoi.Size = new System.Drawing.Size(613, 268);
+            this.clbx_CauHoi.Size = new System.Drawing.Size(613, 312);
             this.clbx_CauHoi.TabIndex = 6;
             this.clbx_CauHoi.Visible = false;
             this.clbx_CauHoi.SelectedIndexChanged += new System.EventHandler(this.clbx_CauHoi_SelectedIndexChanged);
@@ -136,10 +138,30 @@ namespace ModuleSoanDe
             this.label2.TabIndex = 2;
             this.label2.Text = "Mã đề";
             // 
+            // btn_ChonFile
+            // 
+            this.btn_ChonFile.Location = new System.Drawing.Point(14, 189);
+            this.btn_ChonFile.Name = "btn_ChonFile";
+            this.btn_ChonFile.Size = new System.Drawing.Size(92, 29);
+            this.btn_ChonFile.TabIndex = 8;
+            this.btn_ChonFile.Text = "Chọn file";
+            this.btn_ChonFile.UseVisualStyleBackColor = true;
+            this.btn_ChonFile.Click += new System.EventHandler(this.btn_ChonFile_Click);
+            // 
+            // lbl_ChonFile
+            // 
+            this.lbl_ChonFile.AutoSize = true;
+            this.lbl_ChonFile.Location = new System.Drawing.Point(123, 193);
+            this.lbl_ChonFile.Name = "lbl_ChonFile";
+            this.lbl_ChonFile.Size = new System.Drawing.Size(0, 20);
+            this.lbl_ChonFile.TabIndex = 9;
+            // 
             // Page_TaoDeThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbl_ChonFile);
+            this.Controls.Add(this.btn_ChonFile);
             this.Controls.Add(this.txt_MaDe);
             this.Controls.Add(this.clbx_CauHoi);
             this.Controls.Add(this.lbl_SoLuongCauHoi);
@@ -151,7 +173,8 @@ namespace ModuleSoanDe
             this.Controls.Add(this.btn_TaoDeThi);
             this.Controls.Add(this.label1);
             this.Name = "Page_TaoDeThi";
-            this.Size = new System.Drawing.Size(638, 535);
+            this.Size = new System.Drawing.Size(638, 626);
+            this.Load += new System.EventHandler(this.Page_TaoDeThi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txt_SoLuongCauHoi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -170,5 +193,7 @@ namespace ModuleSoanDe
         private System.Windows.Forms.CheckedListBox clbx_CauHoi;
         private System.Windows.Forms.TextBox txt_MaDe;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_ChonFile;
+        private System.Windows.Forms.Label lbl_ChonFile;
     }
 }

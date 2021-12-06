@@ -16,60 +16,12 @@ using ModuleSoanDe.Class;
 //https://stackoverflow.com/questions/3036829/how-do-i-create-a-message-box-with-yes-no-choices-and-a-dialogresult
 namespace ModuleSoanDe
 {
-    //public class WrapListBox : ListBox
-    //{
-    //    private void WrapListBox_DrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
-    //    {
-    //        e.DrawBackground();
-    //        //Let's declare a brush, so that we can color the items that are added in the listbox.
-    //        Brush myBrush = default(Brush);
-    //        if ((e.State == DrawItemState.Selected))
-    //        {
-    //            e.Graphics.FillRectangle(Brushes.LightCyan, e.Bounds);
-    //        }
-    //        //Determine the color of the brush to draw each item based on the index of the item to draw.
-    //        switch ((e.Index) % 3)
-    //        {
-    //            case 0:
-    //                myBrush = Brushes.Chocolate;
-    //                break;
-    //            case 1:
-    //                myBrush = Brushes.MediumSlateBlue;
-    //                break;
-    //            case 2:
-    //                myBrush = Brushes.Teal;
-    //                break;
-    //        }
-    //        // Draw the current item text based on the current Font and the custom brush settings.
-    //        e.Graphics.DrawString(this.Items[e.Index].ToString(), this.Font, myBrush,
-    //         new RectangleF(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height));
-    //        //If the ListBox has focus, draw a focus rectangle around the selected item.
-    //        e.DrawFocusRectangle();
-    //    }
-    //    public WrapListBox()
-    //    {
-    //        MeasureItem += WrapListBox_MeasureItem;
-    //        DrawItem += WrapListBox_DrawItem;
-    //        //This is super important. If you miss it... you won't be able to Draw the item.
-    //        //If you make it OwnerDrawFixed you won't be able to measure the item.
-    //        this.DrawMode = DrawMode.OwnerDrawVariable;
-            
-            
-    //    }
-    //    private void WrapListBox_MeasureItem(object sender, System.Windows.Forms.MeasureItemEventArgs e)
-    //    {
-    //        Graphics g = e.Graphics;
-    //        //We will get the size of the string which we are about to draw,
-    //        //so that we could set the ItemHeight and ItemWidth property
-    //        SizeF size = g.MeasureString(this.Items[e.Index].ToString(), this.Font, this.Width - 5 - SystemInformation.VerticalScrollBarWidth);
-    //        e.ItemHeight = Convert.ToInt32(size.Height) + 5;
-    //        e.ItemWidth = Convert.ToInt32(size.Width) + 5;
-    //    }
-    //}
     public partial class Page_TaoDeThi : UserControl
     {
         List<Question> lstCauHoi = new List<Question>();
         List<int> lstViTriCauHoiTuChon = new List<int>();
+        List<int> lstViTriCauHoiRandom = new List<int>();
+        string xmlQuestionFilePath;
         public Page_TaoDeThi()
         {
             InitializeComponent();
@@ -82,39 +34,43 @@ namespace ModuleSoanDe
             cbx_LuaChon.Items.Add("Ngẫu nhiên");
             cbx_LuaChon.Items.Add("Tự chọn");
             cbx_LuaChon.SelectedIndex = 0;
-            LoadQuestionFromFileToList("data.xml");
-            txt_SoLuongCauHoi.Maximum = lstCauHoi.Count;
-            lbl_SoLuongToiDa.Text = $"Tối đa {lstCauHoi.Count.ToString()}";
-            FillCheckedListBoxCauHoi();
+
+            SetMaximumValueNumberBox(lstCauHoi.Count);
         }
         private void LoadQuestionFromFileToList(string filePath)
         {
-            using (XmlReader xml = XmlReader.Create(filePath))
+            try
             {
-                xml.ReadToFollowing("questions");
-                while (xml.ReadToFollowing("question"))
+                lstCauHoi.Clear();
+                using (XmlReader xml = XmlReader.Create(filePath))
                 {
-                    Question q = new Question();
-                    xml.MoveToAttribute("field");
-                    q.Field = xml.Value;
-                    xml.MoveToAttribute("answerCount");
-                    int answerCount = int.Parse(xml.Value);
-                    xml.ReadToFollowing("content");
-                    q.Content = xml.ReadElementContentAsString();
-                    for (int i = 0; i < answerCount; i++)
+                    xml.ReadToFollowing("questions");
+                    while (xml.ReadToFollowing("question"))
                     {
-                        xml.ReadToFollowing("answer");
-                        q.Answers.Add(xml.ReadElementContentAsString());
+                        Question q = new Question();
+                        xml.MoveToAttribute("field");
+                        q.Field = xml.Value;
+                        xml.MoveToAttribute("answerCount");
+                        int answerCount = int.Parse(xml.Value);
+                        xml.ReadToFollowing("content");
+                        q.Content = xml.ReadElementContentAsString();
+                        for (int i = 0; i < answerCount; i++)
+                        {
+                            xml.ReadToFollowing("answer");
+                            q.Answers.Add(xml.ReadElementContentAsString());
+                        }
+                        xml.ReadToFollowing("trueanswer");
+                        q.TrueAnswer = xml.ReadElementContentAsString();
+                        lstCauHoi.Add(q);
                     }
-                    xml.ReadToFollowing("trueanswer");
-                    q.TrueAnswer = xml.ReadElementContentAsString();
-                    lstCauHoi.Add(q);
                 }
             }
-        }
-        private void show(object s)
-        {
-            MessageBox.Show(s.ToString());
+            catch (FormatException)
+            {
+                MessageBox.Show("Không đúng định dạng file");
+                return;
+            }
+            
         }
         private void DisplayViewOptionNgauNhien()
         {
@@ -128,27 +84,19 @@ namespace ModuleSoanDe
             lbl_SoLuongCauHoi.Visible = false;
             txt_SoLuongCauHoi.Visible = false;
             lbl_SoLuongToiDa.Visible = false;
-            clbx_CauHoi.Visible = true;
-            
+            clbx_CauHoi.Visible = true;            
         }
         private void FillCheckedListBoxCauHoi()
         {
+
+            clbx_CauHoi.Items.Clear();
+            //lstCauHoi có trước rồi mới xài hàm này
             foreach (var q in lstCauHoi)
             {
                 clbx_CauHoi.Items.Add(q.Content);
             }
         }
-        private bool CheckDuplicateIndex(int value, List<int> lstIndex)
-        {
-            foreach (var i in lstIndex)
-            {
-                if (value == i)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+       
         private void cbx_LuaChon_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbx_LuaChon.SelectedItem.ToString() == "Ngẫu nhiên")
@@ -172,10 +120,12 @@ namespace ModuleSoanDe
         }
         private List<int> CreateRandomDistinctIndexList(int maxValue, int amount)
         {
+            //create List containing random distinct value in [0 ;maxValue) with [amount] length
+            //[0 ;8] - 9
             int n = 0;
             Random r = new Random();
             List<int> lstIndex = new List<int>();
-            while (n <= amount)
+            while (n < amount)
             {
                 int number = r.Next(0, maxValue);
                 if (!lstIndex.Contains(number))
@@ -184,40 +134,54 @@ namespace ModuleSoanDe
                     n++;
                 }
             }
+            
             return lstIndex;
         }
         private bool WriteFileHistory()
         {
             string historyFileName = "history.xml";
+            int soLuongCauHoi = int.Parse(txt_SoLuongCauHoi.Value.ToString());
             if (File.Exists(historyFileName))
             {
+                XDocument doc = XDocument.Load(historyFileName);
                 using (XmlReader xmlReader = XmlReader.Create(historyFileName))
                     while (xmlReader.ReadToFollowing("questions"))
                     {
                         xmlReader.MoveToAttribute("code");
                         if (xmlReader.Value == txt_MaDe.Text)
                         {
-                            DialogResult dialogResult = MessageBox.Show($"Đã tồn tại mã đề {txt_MaDe.Text}", "", MessageBoxButtons.YesNo);
+                            DialogResult dialogResult = MessageBox.Show($"Đã tồn tại mã đề {txt_MaDe.Text}\nẤn Yes để xoá đề cũ và tiếp tục", "", MessageBoxButtons.YesNo);
                             if (dialogResult == DialogResult.Yes)
                             {
-                                break;
+                                foreach (var item in doc.Descendants("questions"))
+                                {
+                                    if (item.Attribute("code").Value == txt_MaDe.Text)
+                                    {
+                                        item.Remove();
+                                        break;
+                                    }
+                                }
                             }
                             else if (dialogResult == DialogResult.No)
-                            {
                                 return false;
-                            }
-                        }
+                        }               
                     }
-                XDocument doc = XDocument.Load(historyFileName);
-                XElement questions = new XElement("questions",
-                    new XAttribute("month", DateTime.Now.ToString("MM")),
-                    new XAttribute("code", txt_MaDe.Text));
 
-                foreach (var q in lstCauHoi)
+                XElement questions = new XElement("questions",
+                    new XAttribute("date", DateTime.Now.ToString("dd/MM/yyyy")),
+                    new XAttribute("code", txt_MaDe.Text),
+                    new XAttribute("questionCount", soLuongCauHoi));
+
+
+
+                List<int> lstIndexRandom = CreateRandomDistinctIndexList(lstCauHoi.Count, soLuongCauHoi);
+
+                lstViTriCauHoiRandom = lstIndexRandom;
+                foreach (var randomIndex in lstViTriCauHoiRandom)
                 {
-                    questions.Add(new XElement("question"));
-                    questions.Add(new XElement("content", q.Content));
-                    questions.Add(new XElement("trueanswer", q.TrueAnswer));
+                    questions.Add(new XElement("question"),
+                        new XElement("content", lstCauHoi[randomIndex].Content),
+                        new XElement("trueanswer", lstCauHoi[randomIndex].TrueAnswer));
                 }
                 doc.Root.Add(questions);
                 doc.Save(historyFileName, SaveOptions.None);
@@ -227,20 +191,24 @@ namespace ModuleSoanDe
                 {
                     xml.WriteStartElement("history");
                     xml.WriteStartElement("questions");
-                    xml.WriteAttributeString("month", DateTime.Now.ToString("MM"));
+                    xml.WriteAttributeString("date", DateTime.Now.ToString("dd/MM/yyyy"));
                     xml.WriteAttributeString("code", txt_MaDe.Text);
+                    xml.WriteAttributeString("questionCount", soLuongCauHoi.ToString());
 
-                    foreach (var q in lstCauHoi)
+                    List<int> lstIndexRandom = CreateRandomDistinctIndexList(lstCauHoi.Count, soLuongCauHoi);
+                    lstViTriCauHoiRandom = lstIndexRandom;
+                    foreach (int randomIndex in lstIndexRandom)
                     {
                         xml.WriteStartElement("question");
                         xml.WriteStartElement("content");
-                        xml.WriteValue(q.Content);
+                        xml.WriteValue(lstCauHoi[randomIndex].Content);
                         xml.WriteEndElement();
                         xml.WriteStartElement("trueanswer");
-                        xml.WriteValue(q.TrueAnswer);
+                        xml.WriteValue(lstCauHoi[randomIndex].TrueAnswer);
                         xml.WriteEndElement();
                         xml.WriteEndElement();
                     }
+
                     xml.WriteEndElement();
                     xml.WriteEndElement();
                 }
@@ -248,21 +216,22 @@ namespace ModuleSoanDe
         }
         private void WriteFileTest()
         {
-            int soLuongCauHoi = int.Parse(txt_SoLuongCauHoi.Value.ToString());
+            
             string maDe = txt_MaDe.Text;
-            string fileName = $"dethi-{maDe}.xml";
+            if(!Directory.Exists("questions"))
+                Directory.CreateDirectory("questions");
+            string fileName = $"questions/dethi-{maDe}.xml";
             string luaChon = cbx_LuaChon.SelectedItem.ToString();
             using (XmlWriter xml = XmlWriter.Create(fileName, new XmlWriterSettings() { Indent = true }))
             {
                 xml.WriteStartElement("questions");
-                xml.WriteAttributeString("month", DateTime.Now.ToString("MM"));
+                xml.WriteAttributeString("date", DateTime.Now.ToString("dd/MM/yyyy"));
                 xml.WriteAttributeString("code", maDe);
                 if (luaChon == "Ngẫu nhiên")
                 {
-                    List<int> lstIndex = CreateRandomDistinctIndexList(lstCauHoi.Count, soLuongCauHoi);
-                    for (int i = 0; i < soLuongCauHoi; i++)
+                    for (int i = 0; i < lstViTriCauHoiRandom.Count; i++)
                     {
-                        int indexChon = lstIndex[i];
+                        int indexChon = lstViTriCauHoiRandom[i];
                         xml.WriteStartElement("question");
                         xml.WriteAttributeString("field", lstCauHoi[indexChon].Field);
                         xml.WriteAttributeString("answerCount", lstCauHoi[indexChon].Answers.Count.ToString());
@@ -301,12 +270,55 @@ namespace ModuleSoanDe
                 xml.WriteEndElement();//end for element "questions"   
             }
         }
+
+        private void SetMaximumValueNumberBox(int value)
+        {
+            txt_SoLuongCauHoi.Maximum = value;
+            lbl_SoLuongToiDa.Text = $"Tối đa {value}";
+        }
+        private bool CheckValidForm()
+        {
+            if (txt_MaDe.Text == "")
+            {
+                MessageBox.Show("Vui lòng điền mã đề");
+                return false;
+            }
+            if(txt_SoLuongCauHoi.Value==0)
+            {
+                MessageBox.Show("Số lượng tối thiểu là 1 câu");
+                return false;
+            }
+
+            return true;
+        }
         private void btn_TaoDeThi_Click(object sender, EventArgs e)
         {
+            if (!CheckValidForm())
+                return;
+
             if (WriteFileHistory())
             {
                 WriteFileTest();
             }
+        }
+
+        private void btn_ChonFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Chon tap tin .xml|*.xml";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {           
+                xmlQuestionFilePath = dlg.FileName;
+                lbl_ChonFile.Text = Path.GetFileName(xmlQuestionFilePath);
+                LoadQuestionFromFileToList(xmlQuestionFilePath);
+                FillCheckedListBoxCauHoi();
+                SetMaximumValueNumberBox(lstCauHoi.Count);
+            }
+        }
+
+        private void Page_TaoDeThi_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

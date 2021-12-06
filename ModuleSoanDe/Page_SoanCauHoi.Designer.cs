@@ -46,6 +46,8 @@ namespace ModuleSoanDe
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbl_FileName = new System.Windows.Forms.Label();
+            this.btn_ChonFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_DapAn4
@@ -54,7 +56,7 @@ namespace ModuleSoanDe
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_DapAn4.Location = new System.Drawing.Point(19, 359);
             this.txt_DapAn4.Name = "txt_DapAn4";
-            this.txt_DapAn4.Size = new System.Drawing.Size(428, 27);
+            this.txt_DapAn4.Size = new System.Drawing.Size(471, 27);
             this.txt_DapAn4.TabIndex = 20;
             // 
             // txt_DapAn2
@@ -63,7 +65,7 @@ namespace ModuleSoanDe
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_DapAn2.Location = new System.Drawing.Point(19, 253);
             this.txt_DapAn2.Name = "txt_DapAn2";
-            this.txt_DapAn2.Size = new System.Drawing.Size(428, 27);
+            this.txt_DapAn2.Size = new System.Drawing.Size(471, 27);
             this.txt_DapAn2.TabIndex = 11;
             // 
             // txt_DapAn3
@@ -72,7 +74,7 @@ namespace ModuleSoanDe
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_DapAn3.Location = new System.Drawing.Point(19, 306);
             this.txt_DapAn3.Name = "txt_DapAn3";
-            this.txt_DapAn3.Size = new System.Drawing.Size(428, 27);
+            this.txt_DapAn3.Size = new System.Drawing.Size(471, 27);
             this.txt_DapAn3.TabIndex = 19;
             // 
             // txt_DapAn1
@@ -81,7 +83,7 @@ namespace ModuleSoanDe
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_DapAn1.Location = new System.Drawing.Point(19, 200);
             this.txt_DapAn1.Name = "txt_DapAn1";
-            this.txt_DapAn1.Size = new System.Drawing.Size(428, 27);
+            this.txt_DapAn1.Size = new System.Drawing.Size(471, 27);
             this.txt_DapAn1.TabIndex = 10;
             // 
             // txt_NoiDungCauHoi
@@ -90,14 +92,14 @@ namespace ModuleSoanDe
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_NoiDungCauHoi.Location = new System.Drawing.Point(19, 121);
             this.txt_NoiDungCauHoi.Name = "txt_NoiDungCauHoi";
-            this.txt_NoiDungCauHoi.Size = new System.Drawing.Size(428, 27);
+            this.txt_NoiDungCauHoi.Size = new System.Drawing.Size(471, 27);
             this.txt_NoiDungCauHoi.TabIndex = 9;
             // 
             // btn_ThemDapAn
             // 
             this.btn_ThemDapAn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_ThemDapAn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_ThemDapAn.Location = new System.Drawing.Point(377, 392);
+            this.btn_ThemDapAn.Location = new System.Drawing.Point(420, 392);
             this.btn_ThemDapAn.Name = "btn_ThemDapAn";
             this.btn_ThemDapAn.Size = new System.Drawing.Size(70, 29);
             this.btn_ThemDapAn.TabIndex = 22;
@@ -107,6 +109,7 @@ namespace ModuleSoanDe
             // 
             // cbx_DapAnDung
             // 
+            this.cbx_DapAnDung.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_DapAnDung.FormattingEnabled = true;
             this.cbx_DapAnDung.Location = new System.Drawing.Point(19, 438);
             this.cbx_DapAnDung.Name = "cbx_DapAnDung";
@@ -115,6 +118,7 @@ namespace ModuleSoanDe
             // 
             // cbx_QuestionField
             // 
+            this.cbx_QuestionField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_QuestionField.FormattingEnabled = true;
             this.cbx_QuestionField.Location = new System.Drawing.Point(19, 498);
             this.cbx_QuestionField.Name = "cbx_QuestionField";
@@ -126,9 +130,9 @@ namespace ModuleSoanDe
             this.btn_TaoCauHoi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_TaoCauHoi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_TaoCauHoi.Location = new System.Drawing.Point(19, 555);
+            this.btn_TaoCauHoi.Location = new System.Drawing.Point(18, 576);
             this.btn_TaoCauHoi.Name = "btn_TaoCauHoi";
-            this.btn_TaoCauHoi.Size = new System.Drawing.Size(428, 45);
+            this.btn_TaoCauHoi.Size = new System.Drawing.Size(471, 45);
             this.btn_TaoCauHoi.TabIndex = 24;
             this.btn_TaoCauHoi.Text = "Tạo câu hỏi";
             this.btn_TaoCauHoi.UseVisualStyleBackColor = true;
@@ -215,10 +219,32 @@ namespace ModuleSoanDe
             this.label1.TabIndex = 8;
             this.label1.Text = "Soạn câu hỏi";
             // 
+            // lbl_FileName
+            // 
+            this.lbl_FileName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_FileName.Location = new System.Drawing.Point(160, 500);
+            this.lbl_FileName.Name = "lbl_FileName";
+            this.lbl_FileName.Size = new System.Drawing.Size(230, 23);
+            this.lbl_FileName.TabIndex = 1;
+            this.lbl_FileName.Text = "fileName";
+            this.lbl_FileName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btn_ChonFile
+            // 
+            this.btn_ChonFile.Location = new System.Drawing.Point(396, 497);
+            this.btn_ChonFile.Name = "btn_ChonFile";
+            this.btn_ChonFile.Size = new System.Drawing.Size(94, 29);
+            this.btn_ChonFile.TabIndex = 0;
+            this.btn_ChonFile.Text = "Chọn file";
+            this.btn_ChonFile.UseVisualStyleBackColor = true;
+            this.btn_ChonFile.Click += new System.EventHandler(this.btn_ChonFile_Click);
+            // 
             // Page_SoanCauHoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_ChonFile);
+            this.Controls.Add(this.lbl_FileName);
             this.Controls.Add(this.txt_DapAn4);
             this.Controls.Add(this.txt_DapAn2);
             this.Controls.Add(this.txt_DapAn3);
@@ -237,7 +263,7 @@ namespace ModuleSoanDe
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Name = "Page_SoanCauHoi";
-            this.Size = new System.Drawing.Size(462, 615);
+            this.Size = new System.Drawing.Size(505, 635);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,5 +288,7 @@ namespace ModuleSoanDe
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_FileName;
+        private System.Windows.Forms.Button btn_ChonFile;
     }
 }

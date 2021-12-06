@@ -8,9 +8,8 @@ namespace ModuleSoanDe.Class
 {
     class Question
     {
-        public string Content { get; set; }
-        public string Field { get; set; }
-
+        public string Content;
+        public string Field;
         public List<string> Answers = new List<string>();
         public string TrueAnswer = "";
         

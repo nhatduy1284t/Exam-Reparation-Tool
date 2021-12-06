@@ -18,11 +18,11 @@ namespace ModuleSoanDe
     {
         List<Label> lstLabelDapAn = new List<Label>();
         List<TextBox> lstTxtDapAn = new List<TextBox>();
+        string fileName = "DanhSachCauHoi.xml";
         public Page_SoanCauHoi()
         {
             InitializeComponent();          
             Form_Load();
-
         }
         void Form_Load()
         {
@@ -38,13 +38,16 @@ namespace ModuleSoanDe
             cbx_QuestionField.Items.Add("Phần cứng");
             cbx_QuestionField.Items.Add("Mạng");
             cbx_QuestionField.Items.Add("Bảo mật");
+            cbx_QuestionField.SelectedIndex = 0;
         }
 
-        private void btn_TaoCauHoi_Click(object sender, EventArgs e)
+    private void btn_TaoCauHoi_Click(object sender, EventArgs e)
         {
-            string fileName = "data.xml";
+            if (!CheckValidQuestion())
+                return;
             string questionField = cbx_QuestionField.SelectedItem.ToString();
             int indexTrueAnswer = cbx_DapAnDung.SelectedIndex;
+
             if (!File.Exists(fileName))
             {
                 using (XmlWriter xml = XmlWriter.Create(fileName, new XmlWriterSettings() { Indent = true }))
@@ -88,18 +91,32 @@ namespace ModuleSoanDe
                 doc.Save(fileName, SaveOptions.None);
             }
             ClearForm();
-            
+        }
+        private bool CheckValidQuestion()
+        {
+            if (txt_NoiDungCauHoi.Text == "")
+            {
+                MessageBox.Show("Bạn chưa điền nội dung câu hỏi");
+                return false;
+            }
 
+            if(txt_DapAn1.Text == "" || txt_DapAn2.Text == ""|| txt_DapAn3.Text == ""|| txt_DapAn4.Text == "")
+            {
+                MessageBox.Show("Bạn điền thiếu đáp án");
+            }
+            return true;
         }
         private void CapNhatDanhSachDapAnDung()
-        {
+        {       
             for (int i = 0; i < lstTxtDapAn.Count; i++)
             {
                 cbx_DapAnDung.Items.Add($"Đáp án {i + 1}");
             }
+            cbx_DapAnDung.SelectedIndex = 0;
         }
         private void ClearForm()
         {
+            //Clear form ngoại trừ nút Quay lại
             txt_NoiDungCauHoi.Text = "";
             foreach (var dapAn in lstTxtDapAn)
             {
@@ -122,25 +139,19 @@ namespace ModuleSoanDe
 
             //Button thêm
             btn_ThemDapAn.Location = new Point(btn_ThemDapAn.Location.X, txtDapAn.Location.Y + 10);
-
             Controls.Add(lblDapAn);
             Controls.Add(txtDapAn);
         }
-        private void btn_ThemDapAn_Click(object sender, EventArgs e)
+        
+        private void btn_ChonFile_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Chon tap tin .xml|*.xml";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                fileName = dlg.FileName;
+                lbl_FileName.Text = Path.GetFileName(fileName);
+            }
         }
-
-        private void cbx_DapAnDung_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbx_QuestionField_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }
