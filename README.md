@@ -14,5 +14,6 @@
 ## 4. Completion progress
 - Main functions - 100%
 - Extra :
-    - UX & UI : 70%
+    - UX & UI : 70% (no responsive for some situations)
+- Uncompleted parts:
     - Searching questions in questions bank: No
