@@ -35,7 +35,7 @@ namespace ModuleThiTracNghiem
             // lbl_content
             // 
             this.lbl_content.AutoSize = true;
-            this.lbl_content.Location = new System.Drawing.Point(21, 13);
+            this.lbl_content.Location = new System.Drawing.Point(6, 3);
             this.lbl_content.Name = "lbl_content";
             this.lbl_content.Size = new System.Drawing.Size(59, 20);
             this.lbl_content.TabIndex = 7;
@@ -47,7 +47,8 @@ namespace ModuleThiTracNghiem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lbl_content);
             this.Name = "QuestionControl";
-            this.Size = new System.Drawing.Size(275, 189);
+            this.Padding = new System.Windows.Forms.Padding(3);
+            this.Size = new System.Drawing.Size(460, 262);
             this.ResumeLayout(false);
             this.PerformLayout();
 

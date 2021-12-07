@@ -22,8 +22,13 @@ namespace ModuleSoanDe
         public Page_ChamBai()
         {
             InitializeComponent();
-            
+            Page_Load();
         }
+
+        private void Page_Load()
+        {
+            this.Dock = DockStyle.Fill;
+       }
         private void LoadListQuestions()
         {
             using (XmlReader xml = XmlReader.Create(historyFilePath))
@@ -77,6 +82,7 @@ namespace ModuleSoanDe
                     t.lstAnswer.Add(answer);
                 }
                 lstTest.Add(t);
+                
             }
         }
         private void MarkTest()

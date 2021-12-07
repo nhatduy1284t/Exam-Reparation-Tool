@@ -30,6 +30,7 @@ namespace ModuleSoanDe
         }
         private void Form_Load()
         {
+            this.Dock = DockStyle.Fill;
             //cbx Lua chon
             cbx_LuaChon.Items.Add("Ngẫu nhiên");
             cbx_LuaChon.Items.Add("Tự chọn");

@@ -38,9 +38,10 @@ namespace ModuleThiTracNghiem
             // 
             this.lbl_CountDown.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_CountDown.AutoSize = true;
+            this.lbl_CountDown.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbl_CountDown.Location = new System.Drawing.Point(35, 16);
             this.lbl_CountDown.Name = "lbl_CountDown";
-            this.lbl_CountDown.Size = new System.Drawing.Size(26, 20);
+            this.lbl_CountDown.Size = new System.Drawing.Size(40, 31);
             this.lbl_CountDown.TabIndex = 0;
             this.lbl_CountDown.Text = "lbl";
             // 

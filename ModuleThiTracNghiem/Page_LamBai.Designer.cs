@@ -39,10 +39,11 @@ namespace ModuleThiTracNghiem
             // 
             // btn_MoveRight
             // 
-            this.btn_MoveRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_MoveRight.Location = new System.Drawing.Point(95, 453);
+            this.btn_MoveRight.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_MoveRight.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_MoveRight.Location = new System.Drawing.Point(103, 508);
             this.btn_MoveRight.Name = "btn_MoveRight";
-            this.btn_MoveRight.Size = new System.Drawing.Size(23, 29);
+            this.btn_MoveRight.Size = new System.Drawing.Size(43, 39);
             this.btn_MoveRight.TabIndex = 13;
             this.btn_MoveRight.Text = "→";
             this.btn_MoveRight.UseVisualStyleBackColor = true;
@@ -50,10 +51,11 @@ namespace ModuleThiTracNghiem
             // 
             // btn_MoveLeft
             // 
-            this.btn_MoveLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_MoveLeft.Location = new System.Drawing.Point(66, 453);
+            this.btn_MoveLeft.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_MoveLeft.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_MoveLeft.Location = new System.Drawing.Point(56, 508);
             this.btn_MoveLeft.Name = "btn_MoveLeft";
-            this.btn_MoveLeft.Size = new System.Drawing.Size(23, 29);
+            this.btn_MoveLeft.Size = new System.Drawing.Size(41, 39);
             this.btn_MoveLeft.TabIndex = 14;
             this.btn_MoveLeft.Text = "←";
             this.btn_MoveLeft.UseVisualStyleBackColor = true;
@@ -61,9 +63,9 @@ namespace ModuleThiTracNghiem
             // 
             // lbl_Page
             // 
-            this.lbl_Page.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_Page.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_Page.AutoSize = true;
-            this.lbl_Page.Location = new System.Drawing.Point(21, 457);
+            this.lbl_Page.Location = new System.Drawing.Point(4, 517);
             this.lbl_Page.Name = "lbl_Page";
             this.lbl_Page.Size = new System.Drawing.Size(51, 20);
             this.lbl_Page.TabIndex = 12;
@@ -72,9 +74,9 @@ namespace ModuleThiTracNghiem
             // btn_Submit
             // 
             this.btn_Submit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Submit.Location = new System.Drawing.Point(325, 448);
+            this.btn_Submit.Location = new System.Drawing.Point(354, 508);
             this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(94, 39);
+            this.btn_Submit.Size = new System.Drawing.Size(124, 39);
             this.btn_Submit.TabIndex = 10;
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.UseVisualStyleBackColor = true;
@@ -82,9 +84,10 @@ namespace ModuleThiTracNghiem
             // 
             // btn_XemCauDanhDau
             // 
-            this.btn_XemCauDanhDau.Location = new System.Drawing.Point(125, 448);
+            this.btn_XemCauDanhDau.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_XemCauDanhDau.Location = new System.Drawing.Point(152, 508);
             this.btn_XemCauDanhDau.Name = "btn_XemCauDanhDau";
-            this.btn_XemCauDanhDau.Size = new System.Drawing.Size(194, 39);
+            this.btn_XemCauDanhDau.Size = new System.Drawing.Size(196, 39);
             this.btn_XemCauDanhDau.TabIndex = 15;
             this.btn_XemCauDanhDau.Text = "Xem câu hỏi đã đánh dấu";
             this.btn_XemCauDanhDau.UseVisualStyleBackColor = true;
@@ -92,10 +95,11 @@ namespace ModuleThiTracNghiem
             // 
             // clock
             // 
-            this.clock.Location = new System.Drawing.Point(156, 381);
+            this.clock.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.clock.Location = new System.Drawing.Point(162, 441);
             this.clock.mm = 0;
             this.clock.Name = "clock";
-            this.clock.Size = new System.Drawing.Size(104, 61);
+            this.clock.Size = new System.Drawing.Size(150, 61);
             this.clock.ss = 0;
             this.clock.TabIndex = 16;
             // 
@@ -110,7 +114,7 @@ namespace ModuleThiTracNghiem
             this.Controls.Add(this.lbl_Page);
             this.Controls.Add(this.btn_Submit);
             this.Name = "Page_LamBai";
-            this.Size = new System.Drawing.Size(442, 506);
+            this.Size = new System.Drawing.Size(495, 556);
             this.ResumeLayout(false);
             this.PerformLayout();
 

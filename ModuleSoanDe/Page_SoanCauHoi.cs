@@ -16,17 +16,21 @@ namespace ModuleSoanDe
 
     public partial class Page_SoanCauHoi : UserControl
     {
+        public delegate void ParentFormResizeHandle();
+        public event ParentFormResizeHandle ParentFormResizeEvent;
         List<Label> lstLabelDapAn = new List<Label>();
         List<TextBox> lstTxtDapAn = new List<TextBox>();
         string fileName = "DanhSachCauHoi.xml";
         public Page_SoanCauHoi()
         {
-            InitializeComponent();          
+            InitializeComponent();
             Form_Load();
         }
         void Form_Load()
         {
-            //textbox
+            this.Dock = DockStyle.Fill;
+            //this.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left);
+            ////textbox
             lstTxtDapAn.Add(txt_DapAn1);
             lstTxtDapAn.Add(txt_DapAn2);
             lstTxtDapAn.Add(txt_DapAn3);
@@ -39,9 +43,15 @@ namespace ModuleSoanDe
             cbx_QuestionField.Items.Add("Mạng");
             cbx_QuestionField.Items.Add("Bảo mật");
             cbx_QuestionField.SelectedIndex = 0;
+
+        }
+        public void SetSizeToParent()
+        {
+            //this.MaximumSize = new Size(Parent.MaximumSize.Width, Parent.MaximumSize.Height);
+            //this.Size = new Size(Parent.Size.Width, Parent.Size.Height);    
         }
 
-    private void btn_TaoCauHoi_Click(object sender, EventArgs e)
+        private void btn_TaoCauHoi_Click(object sender, EventArgs e)
         {
             if (!CheckValidQuestion())
                 return;
@@ -100,14 +110,14 @@ namespace ModuleSoanDe
                 return false;
             }
 
-            if(txt_DapAn1.Text == "" || txt_DapAn2.Text == ""|| txt_DapAn3.Text == ""|| txt_DapAn4.Text == "")
+            if (txt_DapAn1.Text == "" || txt_DapAn2.Text == "" || txt_DapAn3.Text == "" || txt_DapAn4.Text == "")
             {
                 MessageBox.Show("Bạn điền thiếu đáp án");
             }
             return true;
         }
         private void CapNhatDanhSachDapAnDung()
-        {       
+        {
             for (int i = 0; i < lstTxtDapAn.Count; i++)
             {
                 cbx_DapAnDung.Items.Add($"Đáp án {i + 1}");
@@ -123,7 +133,7 @@ namespace ModuleSoanDe
                 dapAn.Text = "";
             }
             cbx_DapAnDung.SelectedIndex = -1;
-            cbx_QuestionField.SelectedIndex=-1;
+            cbx_QuestionField.SelectedIndex = -1;
         }
         private void ThemDapAn()
         {
@@ -142,7 +152,7 @@ namespace ModuleSoanDe
             Controls.Add(lblDapAn);
             Controls.Add(txtDapAn);
         }
-        
+
         private void btn_ChonFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();

@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace ModuleThiTracNghiem
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         string xmlFilePath;
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -43,6 +43,7 @@ namespace ModuleThiTracNghiem
                         page_LamBai.name = txt_HoTen.Text;
                         page_LamBai.id = txt_MaNhanVien.Text;
                         Controls.Add(page_LamBai);
+                        MessageBox.Show(page_LamBai.Location.Y.ToString());
                     }
                     break;
             }
@@ -76,8 +77,17 @@ namespace ModuleThiTracNghiem
         }
         private void btn_BatDau_Click(object sender, EventArgs e)
         {
+            
             if (CheckFillInfo() && CheckSelectedFile())
                 DisplayPage(Page.LAM_BAI);         
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+
+            //Controls[0].MaximumSize = Controls[0].Parent.MaximumSize;
+            //Controls[0].Size = new Size(Controls[0].Parent.Size.Width-30, this.Size.Height-30);
+            
         }
     }
 }

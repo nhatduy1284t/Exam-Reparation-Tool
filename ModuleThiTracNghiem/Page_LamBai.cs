@@ -24,8 +24,11 @@ namespace ModuleThiTracNghiem
         int indexCurrentQuestion = 0;
 
         public Page_LamBai(string xmlFilePath)
-        {
+        {   
+            this.Dock = DockStyle.Fill;
+            this.Anchor = AnchorStyles.Top;
             InitializeComponent();
+            
             //Cài đặt sự kiện time up
             clock.Clock_TimeUp += new Clock.Clock_TimeUpHandle(ClockTimeUp);
 
@@ -50,11 +53,14 @@ namespace ModuleThiTracNghiem
                     {
                         xml.ReadToFollowing("answer");
                         RadioButton rdAnswer = new RadioButton();
+                        
                         rdAnswer.Text = xml.ReadElementContentAsString();
                         qc.Answers.Add(rdAnswer);
                     }
+
                     qc.SetLocationAnswers();
                     questionControlList.Add(qc);
+                    
                 }
                 clock.SetTimeCountDown(questionControlList.Count * timePerQues);
             }
@@ -82,6 +88,7 @@ namespace ModuleThiTracNghiem
             questionControlList[number].SetSizeToParentSize();
             indexCurrentQuestion = number;
             this.lbl_Page.Text = $"{indexCurrentQuestion + 1}/{questionControlList.Count}";
+            
         }
 
         private void btn_MoveRight_Click(object sender, EventArgs e)
@@ -176,6 +183,7 @@ namespace ModuleThiTracNghiem
         }
         private void FillListIndexNotice()
         {
+
             lstIndexNotice.Clear();
             for (int i = 0; i < questionControlList.Count; i++)
             {

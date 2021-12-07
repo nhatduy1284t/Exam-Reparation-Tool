@@ -41,9 +41,10 @@ namespace ModuleSoanDe
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(114, 13);
+            this.label1.Location = new System.Drawing.Point(172, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 54);
             this.label1.TabIndex = 0;
@@ -51,6 +52,7 @@ namespace ModuleSoanDe
             // 
             // btn_DocFileBaiLam
             // 
+            this.btn_DocFileBaiLam.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_DocFileBaiLam.Location = new System.Drawing.Point(20, 123);
             this.btn_DocFileBaiLam.Name = "btn_DocFileBaiLam";
             this.btn_DocFileBaiLam.Size = new System.Drawing.Size(135, 32);
@@ -65,22 +67,23 @@ namespace ModuleSoanDe
             // 
             // lbx_Test
             // 
-            this.lbx_Test.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbx_Test.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbx_Test.FormattingEnabled = true;
             this.lbx_Test.ItemHeight = 20;
             this.lbx_Test.Location = new System.Drawing.Point(20, 161);
             this.lbx_Test.Name = "lbx_Test";
-            this.lbx_Test.Size = new System.Drawing.Size(380, 304);
+            this.lbx_Test.Size = new System.Drawing.Size(512, 304);
             this.lbx_Test.TabIndex = 2;
             // 
             // btn_ChamBai
             // 
             this.btn_ChamBai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ChamBai.Location = new System.Drawing.Point(20, 497);
+            this.btn_ChamBai.Location = new System.Drawing.Point(20, 471);
             this.btn_ChamBai.Name = "btn_ChamBai";
-            this.btn_ChamBai.Size = new System.Drawing.Size(380, 45);
+            this.btn_ChamBai.Size = new System.Drawing.Size(512, 71);
             this.btn_ChamBai.TabIndex = 3;
             this.btn_ChamBai.Text = "Thực hiện chấm bài";
             this.btn_ChamBai.UseVisualStyleBackColor = true;
@@ -104,6 +107,7 @@ namespace ModuleSoanDe
             // 
             // btn_ChonFileDapAn
             // 
+            this.btn_ChonFileDapAn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_ChonFileDapAn.Location = new System.Drawing.Point(20, 81);
             this.btn_ChonFileDapAn.Name = "btn_ChonFileDapAn";
             this.btn_ChonFileDapAn.Size = new System.Drawing.Size(135, 29);
@@ -125,7 +129,7 @@ namespace ModuleSoanDe
             this.Controls.Add(this.btn_DocFileBaiLam);
             this.Controls.Add(this.label1);
             this.Name = "Page_ChamBai";
-            this.Size = new System.Drawing.Size(418, 545);
+            this.Size = new System.Drawing.Size(550, 545);
             this.ResumeLayout(false);
             this.PerformLayout();
 

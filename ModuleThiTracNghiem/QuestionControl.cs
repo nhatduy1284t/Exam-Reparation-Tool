@@ -21,6 +21,7 @@ namespace ModuleThiTracNghiem
             set
             {
                 lbl_content.Text = value;
+                SetContentSizeToParentSize();
             }
         }
         public List<RadioButton> Answers = new List<RadioButton>();
@@ -28,37 +29,40 @@ namespace ModuleThiTracNghiem
         public QuestionControl()
         {
             InitializeComponent();
-            SetContentSizeToParentSize();
 
+            
         }
 
         public void SetContentSizeToParentSize()
         {
-            lbl_content.MaximumSize = new Size(this.Size.Width,this.Size.Height);
-            lbl_content.Size = this.Size;
-            lbl_content.AutoSize = true;
+            lbl_content.MaximumSize = new Size(this.Size.Width, this.Height);
+            //lbl_content.Width = this.Size.Width;
         }
         public void SetSizeToParentSize()
-        {         
-            this.Size = new Size(Parent.ClientSize.Width-25,Parent.ClientSize.Height);
+        {
+            this.Size = new Size(Parent.Size.Width -5, this.Parent.Height -5);
             SetContentSizeToParentSize();
         }
         public void SetLocationAnswers()
         {
             for (int i = 0; i < Answers.Count; i++)
             {
-                int locationYBelowContent = lbl_content.Location.Y + lbl_content.Height;
-                Answers[i].Location = new Point(lbl_content.Location.X, locationYBelowContent + 40 * (i + 1));
-                Answers[i].AutoSize = true;
+                
+                int locationYBelowContent = lbl_content.Location.Y + lbl_content.Height;              
                 Controls.Add(Answers[i]);
-                Answers[i].Size = new Size(Answers[i].Parent.Size.Width, Answers[i].Size.Height);
+                Answers[i].Location = new Point(lbl_content.Location.X, locationYBelowContent + 60 * (i + 1));
+                Answers[i].AutoSize = false;
+                Answers[i].MaximumSize= new Size(this.Width+700,this.Height+400);
+                //Answers[i].MinimumSize = new Size(this.Width, 55);
+                Answers[i].Size = new Size(this.Width, 55);
+        
             }
             SetLocationCheckBoxNotice();
         }
         public void SetLocationCheckBoxNotice()
         {
             Point vt = Answers[Answers.Count - 1].Location;
-            cbNotice.Location = new Point(vt.X, vt.Y+50);
+            cbNotice.Location = new Point(vt.X, vt.Y+60);
             cbNotice.AutoSize = true;
             cbNotice.Text = "Đánh dấu lưu ý";
             Controls.Add(cbNotice);
