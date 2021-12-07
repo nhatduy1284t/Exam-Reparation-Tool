@@ -11,7 +11,7 @@
         + Marking test:  Import test done **xml file** from Examining Module and mark score. Then export **txt file** containing information.
     + Examining Module:
         +  Import questions from **xml file**. User will complete the test and export the **xml file** with answers 
-## 3. Completion progress
+## 4. Completion progress
 - Main functions - 100%
 - Extra :
     - UX & UI : 70%
